@@ -73,7 +73,6 @@
       }
     }
 
-    /* Efeito de corações caindo */
     .heart {
       position: fixed;
       top: -20px;
@@ -96,22 +95,21 @@
 
   <div class="galeria">
     <div class="imagem">
-      <img src="imagens/primeiro-encontro.jpg.jpeg" alt="Primeiro Encontro" />
+      <img src="primeiro-encontro.jpg.jpeg" alt="Primeiro Encontro" />
       <p>Primeiro encontro</p>
     </div>
     <div class="imagem">
-      <img src="imagens/amo-viajar-com-voce.jpg.jpeg" alt="Amo viajar com você" />
+      <img src="amo-viajar-com-voce.jpg.jpeg" alt="Amo viajar com você" />
       <p>Amo viajar com você</p>
     </div>
     <div class="imagem">
-      <img src="imagens/inicio-de-tudo.jpg.jpeg" alt="O início de tudo" />
+      <img src="inicio-de-tudo.jpg.jpeg" alt="O início de tudo" />
       <p>O início de tudo</p>
     </div>
   </div>
 
   <div id="contador"></div>
 
-  <!-- Música do YouTube escondida -->
   <div style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;">
     <iframe
       width="1"
@@ -124,7 +122,6 @@
   </div>
 
   <script>
-    // Contador
     const dataInicio = new Date("2024-05-24T00:00:00");
     function atualizarContador() {
       const agora = new Date();
@@ -143,7 +140,6 @@
     setInterval(atualizarContador, 1000);
     atualizarContador();
 
-    // Corações caindo
     function criarCoracao() {
       const coracao = document.createElement("div");
       coracao.classList.add("heart");
