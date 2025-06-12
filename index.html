@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flavio & Juliane</title>
+  <style>
+    body {
+      background-color: #f5defe;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 20px;
+      color: #4b006e;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      text-shadow: 2px 2px 4px #c29ac9;
+    }
+
+    p.frase {
+      font-style: italic;
+      font-size: 1.2em;
+      margin-bottom: 2em;
+    }
+
+    .galeria {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .imagem {
+      background: white;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      transition: transform 0.3s;
+    }
+
+    .imagem:hover {
+      transform: scale(1.05);
+    }
+
+    .imagem img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .imagem p {
+      margin: 10px 0 0 0;
+      font-weight: bold;
+    }
+
+    #contador {
+      font-size: 1.4em;
+      margin-top: 30px;
+      font-weight: bold;
+    }
+
+    @media (min-width: 700px) {
+      .galeria {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .imagem {
+        width: 250px;
+      }
+    }
+
+    /* Efeito de corações caindo */
+    .heart {
+      position: fixed;
+      top: -20px;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: fall 8s linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Flavio & Juliane</h1>
+  <p class="frase">Cada segundo com você é um presente que quero viver para sempre.</p>
+
+  <div class="galeria">
+    <div class="imagem">
+      <img src="imagens/primeiro-encontro.jpg.jpeg" alt="Primeiro Encontro" />
+      <p>Primeiro encontro</p>
+    </div>
+    <div class="imagem">
+      <img src="imagens/amo-viajar-com-voce.jpg.jpeg" alt="Amo viajar com você" />
+      <p>Amo viajar com você</p>
+    </div>
+    <div class="imagem">
+      <img src="imagens/inicio-de-tudo.jpg.jpeg" alt="O início de tudo" />
+      <p>O início de tudo</p>
+    </div>
+  </div>
+
+  <div id="contador"></div>
+
+  <!-- Música do YouTube escondida -->
+  <div style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;">
+    <iframe
+      width="1"
+      height="1"
+      src="https://www.youtube.com/embed/Oa_RSwwpPaA?autoplay=1&loop=1&playlist=Oa_RSwwpPaA&mute=1"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <script>
+    // Contador
+    const dataInicio = new Date("2024-05-24T00:00:00");
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - dataInicio;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      const diasTexto = dias === 1 ? "1 dia" : `${dias} dias`;
+
+      document.getElementById("contador").innerText =
+        `Juntos há ${diasTexto}, ${horas}h ${minutos}m ${segundos}s ❤️`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+
+    // Corações caindo
+    function criarCoracao() {
+      const coracao = document.createElement("div");
+      coracao.classList.add("heart");
+      coracao.style.left = Math.random() * 100 + "vw";
+      coracao.style.animationDuration = Math.random() * 2 + 6 + "s";
+      coracao.innerText = "💖";
+      document.body.appendChild(coracao);
+      setTimeout(() => coracao.remove(), 8000);
+    }
+
+    setInterval(criarCoracao, 500);
+  </script>
+</body>
+</html>
+
